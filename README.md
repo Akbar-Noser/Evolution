@@ -1,5 +1,5 @@
 # Project idea
-The project is a simulation of natural selection and evolution. Different Organisms with random genomes are generated and thrown onto a map. The condition for survival declares if the organism is allowed to replicate. The organisms are generated and deleted in generations. If the organism doesn't have a specific genome, which declares otherwise, it will die after one generation. The condition of survival is up to the developer. Mutations randomly occurr when replicating, with a chance of 1%.
+The project is a simulation of natural selection and evolution. Different Organisms with random genomes are generated and thrown onto a map. The condition for survival declares if the organism is allowed to replicate. The organisms are generated and deleted in generations. If the organism doesn't have a specific genome, which declares otherwise, it will die after one generation. The condition of survival is up to the developer. Mutations randomly occurr when replicating, with a chance of 1/128.
 
 # Use Cases
 ### Generate a specific number of Organisms
