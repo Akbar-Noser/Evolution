@@ -1,5 +1,7 @@
 package ch.noseryoung;
 
+import ch.noseryoung.processor.GenomeProcessor;
+
 public interface Genome {
-    void genomeEffect(Organism self);
+    void genomeEffect(GenomeProcessor processor);
 }
