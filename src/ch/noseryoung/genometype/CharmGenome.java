@@ -8,6 +8,6 @@ import ch.noseryoung.utils.OrganismStatsUtils;
 public class CharmGenome implements Genome {
     @Override
     public void genomeEffect(GenomeProcessor processor) {
-        OrganismStatsUtils.incrementCharm(self);
+        OrganismStatsUtils.incrementCharm(processor.getOrganism());
     }
 }

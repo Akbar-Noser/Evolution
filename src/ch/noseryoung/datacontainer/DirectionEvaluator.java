@@ -1,6 +1,7 @@
 package ch.noseryoung.datacontainer;
 
 import ch.noseryoung.Organism;
+import ch.noseryoung.customenum.Direction;
 
 public class DirectionEvaluator {
     private Organism organismToAssignTo;
@@ -17,48 +18,12 @@ public class DirectionEvaluator {
         up = 0;
     }
 
-    public void incrementVoteRight() {
-        right++;
-    }
-    public void incrementVoteLeft() {
-        left++;
-    }
-    public void incrementVoteUp() {
-        up++;
-    }
-    public void incrementVoteDown() {
-        down++;
-    }
-
-    public int getRight() {
-        return right;
-    }
-
-    public void setRight(int right) {
-        this.right = right;
-    }
-
-    public int getLeft() {
-        return left;
-    }
-
-    public void setLeft(int left) {
-        this.left = left;
-    }
-
-    public int getDown() {
-        return down;
-    }
-
-    public void setDown(int down) {
-        this.down = down;
-    }
-
-    public int getUp() {
-        return up;
-    }
-
-    public void setUp(int up) {
-        this.up = up;
+    public void incrementVote(Direction direction) {
+        switch (direction) {
+            case UP -> up++;
+            case DOWN -> down++;
+            case LEFT -> left++;
+            case RIGHT -> right++;
+        }
     }
 }

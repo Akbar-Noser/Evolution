@@ -8,6 +8,6 @@ import ch.noseryoung.utils.OrganismStatsUtils;
 public class AggressorGenome implements Genome {
     @Override
     public void genomeEffect(GenomeProcessor processor) {
-        OrganismStatsUtils.incrementAggression(self);
+        OrganismStatsUtils.incrementAggression(processor.getOrganism());
     }
 }
