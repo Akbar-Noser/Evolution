@@ -11,19 +11,21 @@ import java.util.ArrayList;
 public class Organism {
     private ArrayList<Genome> genomes;
     private OrganismStats organismStats;
+    private Position currentPosition;
 
-    public Organism() {
+    public Organism(int x, int y) {
         organismStats = new OrganismStats();
         GenomeProcessor processor = new GenomeProcessor(this);
         processor.generateGenomes();
-        processor.processGenomes();
+        currentPosition = new Position(x,y);
     }
 
-    public Position move(Position currentPosition) {
+    public Position move() {
         Direction direction = organismStats.getDirection() != null ? organismStats.getDirection() :
                 OrganismStatsUtils.getRandomDirection();
-        return new Position(calcMovement(currentPosition.getX(), direction.getXDirectionFactor()),
+        currentPosition = new Position(calcMovement(currentPosition.getX(), direction.getXDirectionFactor()),
                 calcMovement(currentPosition.getY(), direction.getYDirectionFactor()));
+        return currentPosition;
     }
 
     private int calcMovement(int currentPosition, int directionFactor) {

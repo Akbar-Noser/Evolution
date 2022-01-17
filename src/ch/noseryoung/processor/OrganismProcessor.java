@@ -13,7 +13,7 @@ public class OrganismProcessor {
 
     public void generateInitialOrganisms(int amount) {
         for (int i = 0; i < amount; i++) {
-            organisms.add(new Organism());
+            organisms.add(new Organism(0,0));
         }
     }
 
