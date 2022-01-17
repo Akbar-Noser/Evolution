@@ -47,4 +47,12 @@ public class Organism {
     public void setOrganismStats(OrganismStats organismStats) {
         this.organismStats = organismStats;
     }
+
+    public Position getCurrentPosition() {
+        return currentPosition;
+    }
+
+    public void setCurrentPosition(Position currentPosition) {
+        this.currentPosition = currentPosition;
+    }
 }
