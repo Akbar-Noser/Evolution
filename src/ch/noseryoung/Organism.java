@@ -16,7 +16,13 @@ public class Organism {
     public Organism(int x, int y) {
         organismStats = new OrganismStats();
         GenomeProcessor processor = new GenomeProcessor(this);
-        processor.generateGenomes();
+        genomes = processor.generateGenomes();
+        currentPosition = new Position(x,y);
+    }
+
+    public Organism(int x, int y, ArrayList<Genome> genomes) {
+        organismStats = new OrganismStats();
+        this.genomes = genomes;
         currentPosition = new Position(x,y);
     }
 

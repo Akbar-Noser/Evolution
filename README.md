@@ -22,7 +22,7 @@ Genomes are the composition of an organism. Each organism has 10 genomes. The di
 |   Speed	| Dictates the number of tiles, which the organism moves, each speed genome adds 1 extra tile  	|
 |   Direction	| Dictates the direction, in which the organism will move, if multiple direction genomes exist, the direction with the most direction genomes will be chosen. If an equal amount of direction genomes exist, one direction will randomly take over and the other genomes will be overwritten with that direction genome.  	|
 |   Aggression	|   If the organism has an aggression genome, it will devour any organism which is within a 1 tile range at the end of the generation and replicate. It can only devour a single organism per generation  |
-|   Defense	|   The organism becomes capable of defending itself against aggressors. If it has the same number or less defense genomes then the aggressor has aggresion genomes, it will die. If it has more defense genomes then the aggressor has aggression genomes, the aggressor will die and the defending organism will replicate.  |
+|   Defense	|   The organism becomes capable of defending itself against aggressors. If it has the same number or less defense genomes then the aggressor has aggression genomes, it will die. If it has more defense genomes then the aggressor has aggression genomes, the aggressor will die and the defending organism will replicate.  |
 |   Charm	|   If the organism with a charm genome is within a 1 tile range of another organism, it will mate and replicate. The range will be increased by 1 for each additional charm genome. The Offspring will then contain both 50% of the paternal genome and 50% of the maternal genome randomly  |
 
 ### Order of evaluation

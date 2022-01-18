@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class GenomeProcessor {
+    public final static int AMOUNT_OF_GENOMES = 10;
     private Organism organism;
     private DirectionEvaluator directionEvaluator;
 
@@ -20,7 +21,7 @@ public class GenomeProcessor {
 
     public ArrayList<Genome> generateGenomes() {
         ArrayList<Genome> genomes = new ArrayList<>();
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < AMOUNT_OF_GENOMES; i++) {
             switch (ThreadLocalRandom.current().nextInt(5)) {
                 case 0 -> genomes.add(new AggressorGenome());
                 case 1 -> genomes.add(new CharmGenome());
@@ -36,6 +37,7 @@ public class GenomeProcessor {
                 }
             }
         }
+        //TODO: evaluate direction
         return genomes;
     }
 
