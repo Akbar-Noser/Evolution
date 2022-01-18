@@ -10,6 +10,7 @@ public class FieldProcessor {
     private final static int X_AXIS_SIZE = 100;
     private final static Organism[][] field = new Organism[Y_AXIS_SIZE][X_AXIS_SIZE];
 
+    //TODO: Create function to spread Organisms across the field
 
     /**
      * // TODO: Separate the displaying and moving the organisms part from each other

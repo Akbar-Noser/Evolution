@@ -8,11 +8,19 @@ import java.util.ArrayList;
 
 public class InteractionProcessor {
 
-    public void startInteraction(ArrayList<Organism> organisms) {
+    private OrganismProcessor organismProcessor;
+
+    public InteractionProcessor(OrganismProcessor organismProcessor) {
+        this.organismProcessor = organismProcessor;
+    }
+
+    public ArrayList<Organism> startInteraction() {
+        ArrayList<Organism> organisms = organismProcessor.getOrganisms();
         ArrayList<Organism> nextGeneration = new ArrayList<>();
         for (Organism organism : organisms) {
             nextGeneration.addAll(interact(organism));
         }
+        return nextGeneration;
     }
 
     private ArrayList<Organism> interact(Organism organism) {
@@ -34,10 +42,10 @@ public class InteractionProcessor {
 
     private Organism aggressionInteraction(Organism aggressor, Organism defender) {
         if (defender.getOrganismStats().getDefense() > aggressor.getOrganismStats().getAggression()) {
-            //TODO: delete aggressor
+            organismProcessor.getOrganisms().remove(aggressor);
             return defender;
         }
-        //TODO: delete defender
+        organismProcessor.getOrganisms().remove(defender);
         return aggressor;
     }
 

@@ -15,11 +15,9 @@ public class OrganismProcessor {
 
     public void generateInitialOrganisms(int amount) {
         for (int i = 0; i < amount; i++) {
-            organisms.add(new Organism(0,0));
+            organisms.add(new Organism(DEFAULT_POSITION.getX(), DEFAULT_POSITION.getY()));
         }
     }
-
- 
 
     public ArrayList<Organism> getOrganisms() {
         return organisms;
