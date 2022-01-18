@@ -19,6 +19,10 @@ public class OrganismProcessor {
         }
     }
 
+    public void setOrganisms(ArrayList<Organism> organisms) {
+        this.organisms = organisms;
+    }
+
     public ArrayList<Organism> getOrganisms() {
         return organisms;
     }
