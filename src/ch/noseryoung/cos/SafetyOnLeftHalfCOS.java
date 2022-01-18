@@ -10,7 +10,7 @@ public class SafetyOnLeftHalfCOS implements COS {
     private static final int SAVE_COORDINATE_LEFT = 0;
     private static final int SAVE_COORDINATE_UP = 0;
     private static final int SAVE_COORDINATE_DOWN = FieldProcessor.Y_AXIS_SIZE - 1;
-    
+
     @Override
     public boolean conditionForSurvival(Organism organism) {
         Position currentPosition = organism.getCurrentPosition();

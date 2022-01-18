@@ -1,5 +1,6 @@
 package ch.noseryoung.processor;
 
+import ch.noseryoung.COS;
 import ch.noseryoung.Organism;
 import ch.noseryoung.datacontainer.Position;
 
@@ -7,22 +8,17 @@ import ch.noseryoung.datacontainer.Position;
  * Processor to configure the condition of survival
  */
 public class COSProcessor {
-    private static int activeCOS;
+    private COS cos;
 
-    public static boolean evaluateCOS(Organism organism) {
-        boolean condition = false;
-        switch (activeCOS) {
-            case 1 -> condition = safetyOnLeftHalf(organism);
-            case 2 -> {/*TODO: safety by eating food*/}
-        }
-        return condition;
+    public COSProcessor(COS cos) {
+        this.cos = cos;
     }
 
-    private static boolean safetyOnLeftHalf (Organism organism) {
-
+    public boolean evaluateCOS(Organism organism) {
+        return cos.conditionForSurvival(organism);
     }
 
-    public void setActiveCOS(int activeCOS) {
-        this.activeCOS = activeCOS;
+    public void setCos(COS cos) {
+        this.cos = cos;
     }
 }
