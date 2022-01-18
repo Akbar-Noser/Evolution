@@ -15,7 +15,7 @@ public class ReplicationProcessor {
         ArrayList<Organism> oldGeneration = organismProcessor.getOrganisms();
         ArrayList<Organism> nextGeneration = new ArrayList<>();
         oldGeneration.forEach(organism -> {
-            //TODO: add condition of survival
+
             if(true) {
                 nextGeneration.add(organism);
             }
