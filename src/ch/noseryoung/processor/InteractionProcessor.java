@@ -5,6 +5,7 @@ import ch.noseryoung.Organism;
 import ch.noseryoung.datacontainer.OrganismStats;
 
 import java.util.ArrayList;
+import java.util.Collection;
 
 public class InteractionProcessor {
 
@@ -25,15 +26,18 @@ public class InteractionProcessor {
 
     private ArrayList<Organism> interact(Organism organism) {
         OrganismStats stats = organism.getOrganismStats();
+        Organism neighbour;
         ArrayList<Organism> nextGeneration = new ArrayList<>();
-        Organism neighbour = null;
         if (stats.getAggression() > 0) {
             if ((neighbour = getFirstNeighbour()) != null) {
-                nextGeneration.add(aggressionInteraction(organism, neighbour));
+                Organism winner = aggressionInteraction(organism, neighbour);
+                nextGeneration.add(winner);
+                if (winner.equals(neighbour))
+                    return nextGeneration;
             }
         }
         if (stats.getCharm() > 0) {
-            if (neighbour != null || (neighbour = getFirstNeighbour()) != null) {
+            if ((neighbour = getFirstNeighbour()) != null) {
                 nextGeneration.add(charmInteraction(organism, neighbour));
             }
         }
@@ -41,20 +45,19 @@ public class InteractionProcessor {
     }
 
     private Organism aggressionInteraction(Organism aggressor, Organism defender) {
-        if (defender.getOrganismStats().getDefense() > aggressor.getOrganismStats().getAggression()) {
-            organismProcessor.getOrganisms().remove(aggressor);
-            return defender;
-        }
+        organismProcessor.getOrganisms().remove(aggressor);
         organismProcessor.getOrganisms().remove(defender);
+        if (defender.getOrganismStats().getDefense() > aggressor.getOrganismStats().getAggression())
+            return defender;
         return aggressor;
     }
 
-    private Organism charmInteraction(Organism parent1, Organism parent2) {
+    private Organism charmInteraction(Organism charmInitializer, Organism charmTarget) {
         ArrayList<Genome> childGenomes = new ArrayList<>();
 
         for (int i = 0; i < GenomeProcessor.AMOUNT_OF_GENOMES / 2; i++) {
-            childGenomes.add(parent1.getGenomes().get(i));
-            childGenomes.add(parent2.getGenomes().get(i));
+            childGenomes.add(charmInitializer.getGenomes().get(i));
+            childGenomes.add(charmTarget.getGenomes().get(i));
         }
         return new Organism(OrganismProcessor.DEFAULT_POSITION.getX(), OrganismProcessor.DEFAULT_POSITION.getY(),
                 childGenomes);
