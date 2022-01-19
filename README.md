@@ -17,7 +17,7 @@ Genomes are the composition of an organism. Each organism has 10 genomes. The di
 
 ### Different types of genomes
 
-|Type    	| Affect   	|
+|Type    	| Effect   	|
 |---	|---	|
 |   Speed	| Dictates the number of tiles, which the organism moves, each speed genome adds 1 extra tile  	|
 |   Direction	| Dictates the direction, in which the organism will move, if multiple direction genomes exist, the direction with the most direction genomes will be chosen. If an equal amount of direction genomes exist, one direction will randomly take over and the other genomes will be overwritten with that direction genome.  	|
