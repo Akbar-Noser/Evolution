@@ -6,8 +6,8 @@ import ch.noseryoung.datacontainer.Position;
 import java.util.ArrayList;
 
 public class FieldProcessor {
-    public final static int Y_AXIS_SIZE = 100;
-    public final static int X_AXIS_SIZE = 100;
+    public final static int Y_AXIS_SIZE = 50;
+    public final static int X_AXIS_SIZE = 50;
     private final static Organism[][] field = new Organism[Y_AXIS_SIZE][X_AXIS_SIZE];
 
     //TODO: Create function to spread Organisms across the field
