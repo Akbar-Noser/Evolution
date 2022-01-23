@@ -5,9 +5,10 @@ import ch.noseryoung.cos.SafetyOnLeftHalfCOS;
 import ch.noseryoung.gui.MainFrame;
 
 import java.util.ArrayList;
+import java.util.concurrent.TimeUnit;
 
 public class Starter {
-    private final int INTIAL_ORGANISM_AMOUNT = 500;
+    private final int INTIAL_ORGANISM_AMOUNT = 100;
     private final OrganismProcessor organismProcessor;
     private final FieldProcessor fieldProcessor;
     private final InteractionProcessor interactionProcessor;
@@ -17,10 +18,12 @@ public class Starter {
     public Starter() {
         organismProcessor = new OrganismProcessor();
         fieldProcessor = new FieldProcessor();
-        interactionProcessor = new InteractionProcessor(organismProcessor);
+        interactionProcessor = new InteractionProcessor(organismProcessor, fieldProcessor);
         replicationProcessor = new ReplicationProcessor(organismProcessor, new COSProcessor(new SafetyOnLeftHalfCOS()));
         organismProcessor.generateInitialOrganisms(INTIAL_ORGANISM_AMOUNT);
+        fieldProcessor.spreadAcrossField(organismProcessor.getOrganisms());
         mainFrame = new MainFrame(this);
+        mainFrame.getGridPanel().getPanel().repaint();
     }
 
     public void completeGenerationCycle(int amount) {

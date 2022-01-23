@@ -30,22 +30,22 @@ public class Organism {
     public Organism(int x, int y, ArrayList<Genome> genomes) {
         organismStats = new OrganismStats();
         this.genomes = genomes;
+        GenomeProcessor processor = new GenomeProcessor(this);
+        processor.processGenomes();
         currentPosition = new Position(x,y);
     }
 
     public Position move() {
         Direction direction = organismStats.getDirection() != null ? organismStats.getDirection() :
                 OrganismStatsUtils.getRandomDirection();
-        currentPosition = new Position(adjustToBounds(calcMovement(currentPosition.getX(),
+        currentPosition = new Position(FieldProcessor.adjustToBounds(calcMovement(currentPosition.getX(),
                         direction.getXDirectionFactor()), FieldProcessor.X_AXIS_SIZE),
-                adjustToBounds(calcMovement(currentPosition.getY(),
+                FieldProcessor.adjustToBounds(calcMovement(currentPosition.getY(),
                         direction.getYDirectionFactor()), FieldProcessor.Y_AXIS_SIZE));
         return currentPosition;
     }
 
-    private int adjustToBounds(int targetPosition, int axisSize) {return targetPosition >= axisSize || targetPosition < 0 ?
-                targetPosition < 0 ? 0 : axisSize - 1 : targetPosition;
-    }
+
 
     private int calcMovement(int currentPosition, int directionFactor) {
         return currentPosition + directionFactor * organismStats.getSpeed();

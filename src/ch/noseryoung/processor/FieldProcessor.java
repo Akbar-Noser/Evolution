@@ -9,11 +9,18 @@ import java.util.concurrent.ThreadLocalRandom;
 public class FieldProcessor {
     public final static int Y_AXIS_SIZE = 50;
     public final static int X_AXIS_SIZE = 50;
-    private final static Organism[][] field = new Organism[Y_AXIS_SIZE][X_AXIS_SIZE];
+    public final static Organism[][] field = new Organism[Y_AXIS_SIZE][X_AXIS_SIZE];
 
-    //TODO: Create function to spread Organisms across the field
+    private void clearField() {
+        for (int y = 0; y < Y_AXIS_SIZE; y++) {
+            for (int x = 0; x < X_AXIS_SIZE; x++) {
+                field[y][x] = null;
+            }
+        }
+    }
 
     public void spreadAcrossField(ArrayList<Organism> organisms) {
+        clearField();
         int listSize = organisms.size();
         for (int i = 0; i < listSize; i++) {
             int x = ThreadLocalRandom.current().nextInt(X_AXIS_SIZE);
@@ -77,4 +84,15 @@ public class FieldProcessor {
         }
         return oldPosition;
     }
+
+    public static boolean isInBounds (int targetPosition, int axisSize) {
+        return targetPosition >= axisSize || targetPosition < 0;
+    }
+
+    public static int adjustToBounds(int targetPosition, int axisSize) {
+        return isInBounds(targetPosition,axisSize) ?
+                targetPosition < 0 ? 0 : axisSize - 1 : targetPosition;
+    }
+
+
 }
