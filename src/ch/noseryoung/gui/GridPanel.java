@@ -59,6 +59,17 @@ public class GridPanel extends Box {
         setVisible(true);
     }
 
+    public GridPanel(GenerationAdvancer advancer) {
+        super(BoxLayout.X_AXIS);
+        gridPanel = new Panel();
+        add(advancer);
+        add(Box.createHorizontalGlue());
+        add(gridPanel);
+        add(Box.createHorizontalGlue());
+        gridPanel.setVisible(true);
+        setVisible(true);
+    }
+
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);

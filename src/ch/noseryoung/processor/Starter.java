@@ -2,6 +2,7 @@ package ch.noseryoung.processor;
 
 import ch.noseryoung.Organism;
 import ch.noseryoung.cos.SafetyOnLeftHalfCOS;
+import ch.noseryoung.gui.MainFrame;
 
 import java.util.ArrayList;
 
@@ -22,6 +23,10 @@ public class Starter {
     public void start() {
         //TODO: change condition to something more sensible
         organismProcessor.generateInitialOrganisms(INTIAL_ORGANISM_AMOUNT);
+        new MainFrame(this);
+    }
+
+    public void completeGenerationCycle(int amount) {
         while (true) {
             fieldProcessor.spreadAcrossField(organismProcessor.getOrganisms());
             fieldProcessor.moveAll(organismProcessor.getOrganisms());
