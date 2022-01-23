@@ -3,6 +3,8 @@ package ch.noseryoung.datacontainer;
 import ch.noseryoung.customenum.Direction;
 import ch.noseryoung.utils.OrganismStatsUtils;
 
+import java.awt.*;
+
 public class OrganismStats {
     private int aggression;
     private int defense;

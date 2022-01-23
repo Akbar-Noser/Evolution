@@ -13,11 +13,11 @@ public class OrganismPainter {
     }
 
     public void paintGeneration(Graphics g, ArrayList<Organism> organisms) {
-        g.setColor(Color.cyan);
         organisms.forEach(organism -> paintOrganism(g, organism));
     }
 
     private void paintOrganism(Graphics g, Organism organism) {
+        g.setColor(organism.getColor());
         g.fillRect(organism.getCurrentPosition().getX() * gridPanel.getScaleFactor(),
                 organism.getCurrentPosition().getY() * gridPanel.getScaleFactor(),
                 gridPanel.getScaleFactor(), gridPanel.getScaleFactor()

@@ -7,17 +7,23 @@ import ch.noseryoung.processor.FieldProcessor;
 import ch.noseryoung.processor.GenomeProcessor;
 import ch.noseryoung.utils.OrganismStatsUtils;
 
+import java.awt.*;
 import java.util.ArrayList;
 
 public class Organism {
     private ArrayList<Genome> genomes;
     private OrganismStats organismStats;
     private Position currentPosition;
+    private Color color;
 
     public Organism(int x, int y) {
         organismStats = new OrganismStats();
         GenomeProcessor processor = new GenomeProcessor(this);
         genomes = processor.generateGenomes();
+        processor.processGenomes();
+        color = new Color(organismStats.getAggression() * 25 + organismStats.getCharm() * 25,
+                organismStats.getSpeed() * 25 + organismStats.getCharm() * 25,
+                organismStats.getDefense() * 25 + organismStats.getCharm() * 25);
         currentPosition = new Position(x,y);
     }
 
@@ -37,13 +43,16 @@ public class Organism {
         return currentPosition;
     }
 
-    private int adjustToBounds(int targetPosition, int axisSize) {
-        return targetPosition >= axisSize || targetPosition < 0 ?
+    private int adjustToBounds(int targetPosition, int axisSize) {return targetPosition >= axisSize || targetPosition < 0 ?
                 targetPosition < 0 ? 0 : axisSize - 1 : targetPosition;
     }
 
     private int calcMovement(int currentPosition, int directionFactor) {
         return currentPosition + directionFactor * organismStats.getSpeed();
+    }
+
+    public Color getColor() {
+        return color;
     }
 
     public ArrayList<Genome> getGenomes() {
