@@ -4,6 +4,7 @@ import ch.noseryoung.Organism;
 import ch.noseryoung.datacontainer.Position;
 
 import java.util.ArrayList;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class FieldProcessor {
     public final static int Y_AXIS_SIZE = 50;
@@ -11,6 +12,21 @@ public class FieldProcessor {
     private final static Organism[][] field = new Organism[Y_AXIS_SIZE][X_AXIS_SIZE];
 
     //TODO: Create function to spread Organisms across the field
+
+    public void spreadAcrossField(ArrayList<Organism> organisms) {
+        int listSize = organisms.size();
+        for (int i = 0; i < listSize; i++) {
+            int x = ThreadLocalRandom.current().nextInt(X_AXIS_SIZE);
+            int y = ThreadLocalRandom.current().nextInt(Y_AXIS_SIZE);
+            if (field[y][x] != null) {
+                --i;
+                continue;
+            }
+            Organism o = organisms.get(i);
+            field[y][x] = o;
+            o.setCurrentPosition(new Position(x,y));
+        }
+    }
 
     /**
      * // TODO: Separate the displaying and moving the organisms part from each other

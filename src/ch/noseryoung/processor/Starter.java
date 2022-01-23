@@ -17,13 +17,13 @@ public class Starter {
         fieldProcessor = new FieldProcessor();
         interactionProcessor = new InteractionProcessor(organismProcessor);
         replicationProcessor = new ReplicationProcessor(organismProcessor, new COSProcessor(new SafetyOnLeftHalfCOS()));
-        organismProcessor.generateInitialOrganisms(INTIAL_ORGANISM_AMOUNT);
     }
 
     public void start() {
         //TODO: change condition to something more sensible
+        organismProcessor.generateInitialOrganisms(INTIAL_ORGANISM_AMOUNT);
         while (true) {
-            //TODO: Spread organisms across the field
+            fieldProcessor.spreadAcrossField(organismProcessor.getOrganisms());
             fieldProcessor.moveAll(organismProcessor.getOrganisms());
             organismProcessor.setOrganisms(replicationProcessor.calcNextGeneration(
                     interactionProcessor.startInteraction()));

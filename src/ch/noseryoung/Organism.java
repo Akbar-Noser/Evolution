@@ -3,6 +3,7 @@ package ch.noseryoung;
 import ch.noseryoung.datacontainer.Position;
 import ch.noseryoung.datacontainer.OrganismStats;
 import ch.noseryoung.customenum.Direction;
+import ch.noseryoung.processor.FieldProcessor;
 import ch.noseryoung.processor.GenomeProcessor;
 import ch.noseryoung.utils.OrganismStatsUtils;
 
@@ -29,9 +30,16 @@ public class Organism {
     public Position move() {
         Direction direction = organismStats.getDirection() != null ? organismStats.getDirection() :
                 OrganismStatsUtils.getRandomDirection();
-        currentPosition = new Position(calcMovement(currentPosition.getX(), direction.getXDirectionFactor()),
-                calcMovement(currentPosition.getY(), direction.getYDirectionFactor()));
+        currentPosition = new Position(adjustToBounds(calcMovement(currentPosition.getX(),
+                        direction.getXDirectionFactor()), FieldProcessor.X_AXIS_SIZE),
+                adjustToBounds(calcMovement(currentPosition.getY(),
+                        direction.getYDirectionFactor()), FieldProcessor.Y_AXIS_SIZE));
         return currentPosition;
+    }
+
+    private int adjustToBounds(int targetPosition, int axisSize) {
+        return targetPosition >= axisSize || targetPosition < 0 ?
+                targetPosition < 0 ? 0 : axisSize - 1 : targetPosition;
     }
 
     private int calcMovement(int currentPosition, int directionFactor) {
