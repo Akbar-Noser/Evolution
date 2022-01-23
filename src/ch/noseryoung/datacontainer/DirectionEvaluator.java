@@ -27,10 +27,7 @@ public class DirectionEvaluator {
                 Direction.UP, up,
                 Direction.DOWN, down));
         int highestValue = Collections.max(directionMap.entrySet(), Map.Entry.comparingByValue()).getValue();
-        directionMap.forEach((direction, integer) -> {
-            if (highestValue > integer)
-                directionMap.remove(direction);
-        });
+        directionMap.entrySet().removeIf(entry -> highestValue > entry.getValue());
         Direction[] directions = directionMap.keySet().toArray(new Direction[0]);
         organismToEvaluate.getOrganismStats().setDirection(
                 directions[ThreadLocalRandom.current().nextInt(directions.length)]);

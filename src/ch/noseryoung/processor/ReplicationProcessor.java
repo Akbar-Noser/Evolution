@@ -17,7 +17,7 @@ public class ReplicationProcessor {
     }
 
     private void mutateRandomGenome(Organism o) {
-        o.getGenomes().remove(ThreadLocalRandom.current().nextInt());
+        o.getGenomes().remove(ThreadLocalRandom.current().nextInt(GenomeProcessor.AMOUNT_OF_GENOMES));
         o.getGenomes().add(GenomeProcessor.getRandomGenome());
     }
 
