@@ -22,7 +22,7 @@ public class Organism {
         genomes = processor.generateGenomes();
         processor.processGenomes();
         color = new Color(organismStats.getAggression() * 25 + organismStats.getCharm() * 25,
-                organismStats.getSpeed() * 25 + organismStats.getCharm() * 25,
+                organismStats.getSpeed() * 23 + organismStats.getCharm() * 23,
                 organismStats.getDefense() * 25 + organismStats.getCharm() * 25);
         currentPosition = new Position(x,y);
     }
@@ -32,6 +32,9 @@ public class Organism {
         this.genomes = genomes;
         GenomeProcessor processor = new GenomeProcessor(this);
         processor.processGenomes();
+        color = new Color(organismStats.getAggression() * 25 + organismStats.getCharm() * 25,
+                organismStats.getSpeed() * 23 + organismStats.getCharm() * 23,
+                organismStats.getDefense() * 25 + organismStats.getCharm() * 25);
         currentPosition = new Position(x,y);
     }
 

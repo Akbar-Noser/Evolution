@@ -75,7 +75,8 @@ public class InteractionProcessor {
         for (int y = positionY - 1; y <  positionY + 1; y++) {
             for (int x = positionX - 1; x < positionX + 1; x++) {
                 if ((neighbour = FieldProcessor.field[FieldProcessor.adjustToBounds(y, FieldProcessor.Y_AXIS_SIZE)]
-                        [FieldProcessor.adjustToBounds(x, FieldProcessor.X_AXIS_SIZE)]) != null)
+                        [FieldProcessor.adjustToBounds(x, FieldProcessor.X_AXIS_SIZE)]) != null &&
+                        !(x == positionX && y == positionY))
                     return neighbour;
             }
         }

@@ -47,6 +47,7 @@ public class FieldProcessor {
         Position targetedPosition;
         for (Organism o :
                 organisms) {
+            field[o.getCurrentPosition().getY()][o.getCurrentPosition().getX()] = null;
             targetedPosition = o.move();
             if (field[targetedPosition.getY()][targetedPosition.getX()] != null) {
                 targetedPosition = adjustPosition(o.getCurrentPosition(), targetedPosition);

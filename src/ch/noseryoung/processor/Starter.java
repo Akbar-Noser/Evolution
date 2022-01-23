@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 
 public class Starter {
-    private final int INTIAL_ORGANISM_AMOUNT = 100;
+    private final int INTIAL_ORGANISM_AMOUNT = 700;
     private final OrganismProcessor organismProcessor;
     private final FieldProcessor fieldProcessor;
     private final InteractionProcessor interactionProcessor;
