@@ -24,7 +24,6 @@ public class OrganismStatsUtils {
         organism.getOrganismStats().setSpeed(organism.getOrganismStats().getSpeed() + 1);
     }
 
-
     public static Direction getRandomDirection() {
         return Direction.values()[ThreadLocalRandom.current().nextInt(Direction.values().length)];
     }
