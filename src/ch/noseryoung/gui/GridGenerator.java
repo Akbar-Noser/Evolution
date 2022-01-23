@@ -12,16 +12,16 @@ public class GridGenerator {
     }
 
     private void generateRows(Graphics g) {
-        for (int i = 0; i < gridPanel.getRows(); i++) {
-            g.drawLine(0, i * gridPanel.getScaleFactor(),
-                    (FieldProcessor.X_AXIS_SIZE - 1) * gridPanel.getScaleFactor(),i * gridPanel.getScaleFactor());
+        for (int i = 0; i <= gridPanel.getRows(); i++) {
+            g.drawLine(0, i * gridPanel.getScaleFactor() ,
+                    (FieldProcessor.X_AXIS_SIZE) * gridPanel.getScaleFactor(),i * gridPanel.getScaleFactor());
         }
     }
 
     private void generateCols(Graphics g) {
-        for (int i = 0; i < gridPanel.getCols(); i++) {
-            g.drawLine(i * gridPanel.getScaleFactor(), 0,
-                    i * gridPanel.getScaleFactor(), (FieldProcessor.Y_AXIS_SIZE - 1) * gridPanel.getScaleFactor());
+        for (int i = 0; i <= gridPanel.getCols(); i++) {
+            g.drawLine(i * gridPanel.getScaleFactor() , 0,
+                    i * gridPanel.getScaleFactor(), (FieldProcessor.Y_AXIS_SIZE) * gridPanel.getScaleFactor());
         }
     }
 

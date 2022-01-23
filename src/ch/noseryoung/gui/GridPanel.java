@@ -1,9 +1,12 @@
 package ch.noseryoung.gui;
 
+import ch.noseryoung.Organism;
 import ch.noseryoung.processor.FieldProcessor;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
+import java.util.Set;
 
 class Panel extends JPanel {
     private final int rows, cols;
@@ -11,8 +14,8 @@ class Panel extends JPanel {
     private final GridGenerator gridGenerator;
 
     public Panel() {
-        Dimension gridSize = new Dimension((FieldProcessor.X_AXIS_SIZE - 1) * scaleFactor + 1,
-                (FieldProcessor.Y_AXIS_SIZE - 1) * scaleFactor + 1);
+        Dimension gridSize = new Dimension((FieldProcessor.X_AXIS_SIZE ) * scaleFactor + 1,
+                (FieldProcessor.Y_AXIS_SIZE ) * scaleFactor + 1);
         setMaximumSize(gridSize);
         setMinimumSize(gridSize);
         setPreferredSize(gridSize);
@@ -24,6 +27,9 @@ class Panel extends JPanel {
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
+        new OrganismPainter(this).paintGeneration(g, new ArrayList<>(Set.of(new Organism(0,0),
+                new Organism(5,7), new Organism(33,23), new Organism(49, 49))));
+        g.setColor(Color.BLACK);
         gridGenerator.generateGrid(g);
     }
 
@@ -56,5 +62,9 @@ public class GridPanel extends Box {
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
+    }
+
+    public Panel getPanel() {
+        return gridPanel;
     }
 }
