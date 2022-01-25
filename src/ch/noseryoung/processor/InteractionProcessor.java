@@ -33,15 +33,21 @@ public class InteractionProcessor {
         OrganismStats stats = organism.getOrganismStats();
         Organism neighbour;
         ArrayList<Organism> nextGeneration = new ArrayList<>();
-        if (stats.getAggression() > 0) {
+        if (stats.getAggression() > 0 && stats.getAggression() > stats.getCharm()) {
             if ((neighbour = getFirstNeighbour(organism)) != null) {
                 Organism winner = aggressionInteraction(organism, neighbour);
                 nextGeneration.add(winner);
                 if (winner.equals(neighbour))
                     return nextGeneration;
             }
+            if ((neighbour = getFirstNeighbour(organism)) != null) {
+                Organism winner = aggressionInteraction(organism, neighbour);
+                nextGeneration.add(winner.equals(organism) ? new Organism(winner) : winner);
+                if (winner.equals(neighbour))
+                    return nextGeneration;
+            }
         }
-        if (stats.getCharm() > 0) {
+        if (stats.getCharm() > 3 && stats.getCharm() > stats.getAggression()) {
             if ((neighbour = getFirstNeighbour(organism)) != null) {
                 nextGeneration.add(charmInteraction(organism, neighbour));
             }
@@ -64,6 +70,7 @@ public class InteractionProcessor {
             childGenomes.add(charmInitializer.getGenomes().get(i));
             childGenomes.add(charmTarget.getGenomes().get(i));
         }
+        organismsToRemove.add(charmInitializer);
         return new Organism(OrganismProcessor.DEFAULT_POSITION.getX(), OrganismProcessor.DEFAULT_POSITION.getY(),
                 childGenomes);
     }
@@ -76,6 +83,7 @@ public class InteractionProcessor {
             for (int x = positionX - 1; x < positionX + 1; x++) {
                 if ((neighbour = FieldProcessor.field[FieldProcessor.adjustToBounds(y, FieldProcessor.Y_AXIS_SIZE)]
                         [FieldProcessor.adjustToBounds(x, FieldProcessor.X_AXIS_SIZE)]) != null &&
+                        !organismsToRemove.contains(neighbour) &&
                         !(x == positionX && y == positionY))
                     return neighbour;
             }

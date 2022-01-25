@@ -2,6 +2,7 @@ package ch.noseryoung.gui;
 
 import ch.noseryoung.Organism;
 import ch.noseryoung.processor.FieldProcessor;
+import ch.noseryoung.processor.Starter;
 
 import javax.swing.*;
 import java.awt.*;
@@ -21,10 +22,10 @@ public class GridPanel extends Box {
         setVisible(true);
     }
 
-    public GridPanel(GenerationAdvancer advancer, ArrayList<Organism> organisms) {
+    public GridPanel(Starter starter) {
         super(BoxLayout.X_AXIS);
-        gridPanel = new Panel(organisms);
-        add(advancer);
+        gridPanel = new Panel(starter.getOrganismProcessor().getOrganisms());
+        add(new InputInterface(starter));
         add(Box.createHorizontalGlue());
         add(gridPanel);
         add(Box.createHorizontalGlue());

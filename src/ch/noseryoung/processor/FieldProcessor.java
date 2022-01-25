@@ -77,8 +77,8 @@ public class FieldProcessor {
         int y = targetedPosition.getY() - oldPosition.getY();
         if (y != 0) {
             // stepper is 1 if target direction is left and -1 if it's right
-            int stepper = x < 0 ? 1 : -1;
-            for (int i = x + stepper; i != 0 ; i += stepper) {
+            int stepper = y < 0 ? 1 : -1;
+            for (int i = y + stepper; i != 0 ; i += stepper) {
                 if (field[oldPosition.getY() + i][targetedPosition.getX()] == null)
                     return new Position(targetedPosition.getX(), oldPosition.getY() + i);
             }
@@ -86,14 +86,13 @@ public class FieldProcessor {
         return oldPosition;
     }
 
-    public static boolean isInBounds (int targetPosition, int axisSize) {
+    public static boolean isNotInBounds(int targetPosition, int axisSize) {
         return targetPosition >= axisSize || targetPosition < 0;
     }
 
     public static int adjustToBounds(int targetPosition, int axisSize) {
-        return isInBounds(targetPosition,axisSize) ?
+        return isNotInBounds(targetPosition,axisSize) ?
                 targetPosition < 0 ? 0 : axisSize - 1 : targetPosition;
     }
-
 
 }

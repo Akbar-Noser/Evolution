@@ -29,10 +29,12 @@ public class ReplicationProcessor {
                 if (MUTATION_CHANCE == ThreadLocalRandom.current().nextInt(MUTATION_CHANCE + 1))
                     mutateRandomGenome(organism);
                 nextGeneration.add(organism);
+                nextGeneration.add(new Organism(organism));
             }
         });
         nextGeneration.addAll(interactionChildren);
         return nextGeneration;
     }
+
 
 }

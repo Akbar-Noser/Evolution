@@ -24,7 +24,14 @@ public class Organism {
         color = new Color(organismStats.getAggression() * 25 + organismStats.getCharm() * 25,
                 organismStats.getSpeed() * 23 + organismStats.getCharm() * 23,
                 organismStats.getDefense() * 25 + organismStats.getCharm() * 25);
-        currentPosition = new Position(x,y);
+        currentPosition = new Position(x, y);
+    }
+
+    public Organism(Organism o) {
+        organismStats = o.getOrganismStats();
+        genomes = (ArrayList<Genome>) o.getGenomes().clone();
+        currentPosition = new Position(o.getCurrentPosition());
+        color = o.getColor();
     }
 
     public Organism(int x, int y, ArrayList<Genome> genomes) {
@@ -35,19 +42,18 @@ public class Organism {
         color = new Color(organismStats.getAggression() * 25 + organismStats.getCharm() * 25,
                 organismStats.getSpeed() * 23 + organismStats.getCharm() * 23,
                 organismStats.getDefense() * 25 + organismStats.getCharm() * 25);
-        currentPosition = new Position(x,y);
+        currentPosition = new Position(x, y);
     }
 
     public Position move() {
         Direction direction = organismStats.getDirection() != null ? organismStats.getDirection() :
                 OrganismStatsUtils.getRandomDirection();
-        currentPosition = new Position(FieldProcessor.adjustToBounds(calcMovement(currentPosition.getX(),
-                        direction.getXDirectionFactor()), FieldProcessor.X_AXIS_SIZE),
+        return new Position(FieldProcessor.adjustToBounds(calcMovement(currentPosition.getX(),
+                direction.getXDirectionFactor()), FieldProcessor.X_AXIS_SIZE),
                 FieldProcessor.adjustToBounds(calcMovement(currentPosition.getY(),
                         direction.getYDirectionFactor()), FieldProcessor.Y_AXIS_SIZE));
-        return currentPosition;
-    }
 
+    }
 
 
     private int calcMovement(int currentPosition, int directionFactor) {

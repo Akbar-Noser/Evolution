@@ -13,8 +13,9 @@ public class MainFrame extends JFrame {
     private final GridPanel gridPanel;
 
     public MainFrame(Starter starter) throws HeadlessException {
-        gridPanel = new GridPanel(new GenerationAdvancer(starter), starter.getOrganismProcessor().getOrganisms());
+        gridPanel = new GridPanel(starter);
         add(gridPanel);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setExtendedState(JFrame.MAXIMIZED_BOTH);
         setVisible(true);
     }
