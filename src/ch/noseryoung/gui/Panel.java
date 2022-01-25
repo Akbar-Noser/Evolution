@@ -7,6 +7,9 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 
+/**
+ * Panel which contains and displays the field and its organisms
+ */
 public class Panel extends JPanel {
     private final int rows, cols;
     private final int scaleFactor = 13;
@@ -27,6 +30,10 @@ public class Panel extends JPanel {
         painter = new OrganismPainter(this);
     }
 
+    /**
+     * overridden method which paints the grid and the organisms within
+     * @param g Graphics context which is used for drawing the GUI
+     */
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);

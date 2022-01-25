@@ -4,6 +4,10 @@ import ch.noseryoung.processor.Starter;
 
 import javax.swing.*;
 
+/**
+ * Contains all the user input possibility through
+ * GUI components
+ */
 public class InputInterface extends Box {
     private final JPanel panel;
 

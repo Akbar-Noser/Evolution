@@ -8,6 +8,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
+/**
+ * Containing the components responsible for resetting the field
+ */
 public class Resetter extends JPanel {
     private Button resetButton;
     private InputField amountInputField;

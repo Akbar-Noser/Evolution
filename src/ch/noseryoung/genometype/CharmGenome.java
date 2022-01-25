@@ -5,6 +5,9 @@ import ch.noseryoung.Organism;
 import ch.noseryoung.processor.GenomeProcessor;
 import ch.noseryoung.utils.OrganismStatsUtils;
 
+/**
+ * increments the charm value of an organism
+ */
 public class CharmGenome implements Genome {
     @Override
     public void genomeEffect(GenomeProcessor processor) {

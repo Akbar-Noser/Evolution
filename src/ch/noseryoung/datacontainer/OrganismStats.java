@@ -5,6 +5,9 @@ import ch.noseryoung.utils.OrganismStatsUtils;
 
 import java.awt.*;
 
+/**
+ * Contains all the values that got generated through the genomes
+ */
 public class OrganismStats {
     private int aggression;
     private int defense;

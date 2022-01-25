@@ -7,6 +7,9 @@ import ch.noseryoung.datacontainer.OrganismStats;
 import java.util.ArrayList;
 import java.util.Collection;
 
+/**
+ * Manages the interactions between the organisms and its offspring
+ */
 public class InteractionProcessor {
     private FieldProcessor fieldProcessor;
     private OrganismProcessor organismProcessor;
@@ -18,6 +21,10 @@ public class InteractionProcessor {
         organismsToRemove = new ArrayList<>();
     }
 
+    /**
+     * starts the interaction between all the organisms
+     * @return the children created by the interaction
+     */
     public ArrayList<Organism> startInteraction() {
         organismsToRemove.clear();
         ArrayList<Organism> organisms = organismProcessor.getOrganisms();
@@ -29,6 +36,15 @@ public class InteractionProcessor {
         return nextGeneration;
     }
 
+    /**
+     * The interaction initiated by a single organism. Aggression interaction will start
+     * if the aggression stat is bigger than 0 and the aggression stat is bigger than the
+     * charm stat. The charm interaction will start if the charm stat is bigger than 3 and
+     * the charm stat is bigger than the aggression stat. They will always interact with
+     * the first neighbour they find.
+     * @param organism the interaction initiator
+     * @return The children resulting from the interaction
+     */
     private ArrayList<Organism> interact(Organism organism) {
         OrganismStats stats = organism.getOrganismStats();
         Organism neighbour;
@@ -55,6 +71,13 @@ public class InteractionProcessor {
         return nextGeneration;
     }
 
+    /**
+     * The interaction resulting from aggression genomes. The defender will win if he has
+     * a higher defense stat, than the aggressor's aggression stat, otherwise the aggressor will win.
+     * @param aggressor the initiator of the aggression interaction
+     * @param defender the victim of the aggression interaction
+     * @return Two copies of the winner
+     */
     private Organism aggressionInteraction(Organism aggressor, Organism defender) {
         organismsToRemove.add(aggressor);
         organismsToRemove.add(defender);
@@ -63,6 +86,13 @@ public class InteractionProcessor {
         return aggressor;
     }
 
+    /**
+     * The interaction resulting from charm genomes. The resulting child will
+     * have half of one and half of the other parent's genome.
+     * @param charmInitializer the initiator of the charm interaction
+     * @param charmTarget the receiver of the charm interaction
+     * @return the child with half of one and half of the other parent's genome
+     */
     private Organism charmInteraction(Organism charmInitializer, Organism charmTarget) {
         ArrayList<Genome> childGenomes = new ArrayList<>();
 
@@ -75,6 +105,12 @@ public class InteractionProcessor {
                 childGenomes);
     }
 
+    /**
+     * Goes around the organism, starting in the top left corner and checks for neighbours
+     * it returns the first neighbour it finds and which hasn't been marked for deletion;
+     * @param organism organism for which the first neighbour is to be found
+     * @return the first found neighbour
+     */
     private Organism getFirstNeighbour(Organism organism) {
         int positionY = organism.getCurrentPosition().getY();
         int positionX = organism.getCurrentPosition().getX();

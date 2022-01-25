@@ -9,6 +9,9 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.Set;
 
+/**
+ * Surrounds the Grid to secure its position
+ */
 public class GridPanel extends Box {
     private final Panel gridPanel;
 

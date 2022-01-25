@@ -14,6 +14,11 @@ public class COSProcessor {
         this.cos = cos;
     }
 
+    /**
+     * Evaluates if an organism meets the criteria of the active COS
+     * @param organism Organism which is evaluated
+     * @return boolean value which expresses  if the organism meets the criteria of the COS
+     */
     public boolean evaluateCOS(Organism organism) {
         return cos.conditionForSurvival(organism);
     }

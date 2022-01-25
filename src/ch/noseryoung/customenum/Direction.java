@@ -1,5 +1,9 @@
 package ch.noseryoung.customenum;
 
+/**
+ * Enum to evaluate the direction in which the organism will move.
+ * Factors are used to calculate the movement
+ */
 public enum Direction {
     RIGHT(1, 0),
     LEFT(-1, 0),

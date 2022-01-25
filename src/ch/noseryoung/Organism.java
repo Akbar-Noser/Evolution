@@ -10,6 +10,9 @@ import ch.noseryoung.utils.OrganismStatsUtils;
 import java.awt.*;
 import java.util.ArrayList;
 
+/**
+ * The organism which is the main actor of the program
+ */
 public class Organism {
     private ArrayList<Genome> genomes;
     private OrganismStats organismStats;
@@ -45,6 +48,10 @@ public class Organism {
         currentPosition = new Position(x, y);
     }
 
+    /**
+     * The organism moves based on its stats, taking the bounds into account
+     * @return The position which the organism wants to move to
+     */
     public Position move() {
         Direction direction = organismStats.getDirection() != null ? organismStats.getDirection() :
                 OrganismStatsUtils.getRandomDirection();
@@ -56,6 +63,12 @@ public class Organism {
     }
 
 
+    /**
+     * The calculation of the movement, which is dependent on direction and speed
+     * @param currentPosition the position which it is currently on
+     * @param directionFactor the direction factor coming from the Direction enum
+     * @return the position based on speed and direction
+     */
     private int calcMovement(int currentPosition, int directionFactor) {
         return currentPosition + directionFactor * organismStats.getSpeed();
     }

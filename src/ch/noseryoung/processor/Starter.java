@@ -7,6 +7,9 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * The starter class
+ */
 public class Starter {
     private final int INTIAL_ORGANISM_AMOUNT = 500;
     private final OrganismProcessor organismProcessor;
@@ -49,6 +52,10 @@ public class Starter {
         );
     }
 
+    /**
+     * Completes a cycle of a generation
+     * @param amount amount of movement cycles.
+     */
     public void completeGenerationCycle(int amount) {
         amountOfRepeats = amount;
         animationTimer.start();

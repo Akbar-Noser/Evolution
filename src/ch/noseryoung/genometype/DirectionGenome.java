@@ -5,6 +5,9 @@ import ch.noseryoung.Organism;
 import ch.noseryoung.customenum.Direction;
 import ch.noseryoung.processor.GenomeProcessor;
 
+/**
+ * Increments the vote for the associated direction
+ */
 public class DirectionGenome implements Genome {
     private Direction direction;
 

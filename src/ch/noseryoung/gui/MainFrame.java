@@ -9,6 +9,9 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.Set;
 
+/**
+ * Implementation of JFrame, displays the GUI window
+ */
 public class MainFrame extends JFrame {
     private final GridPanel gridPanel;
 

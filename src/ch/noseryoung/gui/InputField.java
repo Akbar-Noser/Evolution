@@ -3,6 +3,9 @@ package ch.noseryoung.gui;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * Implementation of JTextField
+ */
 public class InputField extends JTextField {
 
     public InputField() {

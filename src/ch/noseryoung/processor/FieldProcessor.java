@@ -6,11 +6,18 @@ import ch.noseryoung.datacontainer.Position;
 import java.util.ArrayList;
 import java.util.concurrent.ThreadLocalRandom;
 
+/**
+ * Responsible for managing the field and the functionalities
+ * directly associated with it
+ */
 public class FieldProcessor {
     public final static int Y_AXIS_SIZE = 50;
     public final static int X_AXIS_SIZE = 50;
     public final static Organism[][] field = new Organism[Y_AXIS_SIZE][X_AXIS_SIZE];
 
+    /**
+     * clears the field
+     */
     private void clearField() {
         for (int y = 0; y < Y_AXIS_SIZE; y++) {
             for (int x = 0; x < X_AXIS_SIZE; x++) {
@@ -19,6 +26,11 @@ public class FieldProcessor {
         }
     }
 
+    /**
+     * Clears the field and randomly spreads the organisms across the field.
+     * Will infinite loop if amount of organisms exceed the space on the field.
+     * @param organisms Organisms which should be spread acorss the field
+     */
     public void spreadAcrossField(ArrayList<Organism> organisms) {
         clearField();
         int listSize = organisms.size();
@@ -36,7 +48,6 @@ public class FieldProcessor {
     }
 
     /**
-     * // TODO: Separate the displaying and moving the organisms part from each other
      *
      * Moves all the organisms, if a target field is taken, it will look for an empty slot along its path
      * (Example: It moves to the right with the speed of 4, the target field is occupied, it moves back one slot and
@@ -60,9 +71,9 @@ public class FieldProcessor {
     /**
      * Determines in which direction the Organism is going and moves back until it finds an empty field
      * If no empty field is found, it won't move.
-     * @param oldPosition
-     * @param targetedPosition
-     * @return
+     * @param oldPosition The position the organism is currently on
+     * @param targetedPosition The position which the organism is aiming to move to
+     * @return A position which is empty
      */
     private Position adjustPosition(Position oldPosition, Position targetedPosition) {
         int x = targetedPosition.getX() - oldPosition.getX();
@@ -86,10 +97,22 @@ public class FieldProcessor {
         return oldPosition;
     }
 
+    /**
+     * checks if the axis position is in bounds
+     * @param targetPosition the axis position
+     * @param axisSize the size of the axis
+     * @return boolean value if the position on the axis is in bounds
+     */
     public static boolean isNotInBounds(int targetPosition, int axisSize) {
         return targetPosition >= axisSize || targetPosition < 0;
     }
 
+    /**
+     * adjusts the axis position to be in bounds
+     * @param targetPosition the axis position
+     * @param axisSize the size of the axis
+     * @return the edge axis position which is in bounds
+     */
     public static int adjustToBounds(int targetPosition, int axisSize) {
         return isNotInBounds(targetPosition,axisSize) ?
                 targetPosition < 0 ? 0 : axisSize - 1 : targetPosition;

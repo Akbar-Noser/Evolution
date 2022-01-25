@@ -1,5 +1,8 @@
 package ch.noseryoung.datacontainer;
 
+/**
+ * Container to store an x and y position
+ */
 public class Position {
     private int x;
     private int y;

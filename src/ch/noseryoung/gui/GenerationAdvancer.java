@@ -6,6 +6,9 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * GUI Interface to advance Generations
+ */
 public class GenerationAdvancer extends JPanel {
     private final Button button;
     private final InputField inputField;
