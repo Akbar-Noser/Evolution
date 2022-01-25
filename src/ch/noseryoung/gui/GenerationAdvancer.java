@@ -8,12 +8,12 @@ import java.awt.event.ActionListener;
 
 public class GenerationAdvancer extends JPanel {
     private final Button button;
-    private final GenerationAdvancerInputField inputField;
+    private final InputField inputField;
     private final Starter starter;
 
     public GenerationAdvancer(Starter starter) {
         add(button = new Button("Advance"));
-        add(inputField = new GenerationAdvancerInputField());
+        add(inputField = new InputField());
         this.starter = starter;
         setAlignmentX(LEFT_ALIGNMENT);
 

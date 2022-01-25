@@ -10,16 +10,17 @@ import java.util.ArrayList;
 
 public class Resetter extends JPanel {
     private Button resetButton;
+    private InputField amountInputField;
     private Starter starter;
 
     public Resetter(Starter starter) {
         this.starter = starter;
         resetButton = new Button("Reset");
         add(resetButton);
-        add(Box.createRigidArea(new Dimension(100, 20)));
+        add(amountInputField = new InputField());
         resetButton.addActionListener(e -> {
             starter.getOrganismProcessor().setOrganisms(new ArrayList<>());
-            starter.getOrganismProcessor().generateInitialOrganisms(starter.getINTIAL_ORGANISM_AMOUNT());
+            starter.getOrganismProcessor().generateInitialOrganisms(Integer.parseInt(amountInputField.getText()));
             starter.getFieldProcessor().spreadAcrossField(starter.getOrganismProcessor().getOrganisms());
             starter.getMainFrame().getGridPanel().getPanel().setOrganisms(starter.getOrganismProcessor().getOrganisms());
             starter.getMainFrame().getGridPanel().getPanel().revalidate();
