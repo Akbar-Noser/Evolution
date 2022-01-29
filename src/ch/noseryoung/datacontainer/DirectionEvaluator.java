@@ -55,4 +55,13 @@ public class DirectionEvaluator {
             case RIGHT -> right++;
         }
     }
+
+    public int getRight() {
+        return right;
+    }
+
+    public void setRight(int right) {
+        this.right = right;
+    }
+
 }

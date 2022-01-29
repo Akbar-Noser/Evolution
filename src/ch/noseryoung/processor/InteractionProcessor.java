@@ -115,12 +115,12 @@ public class InteractionProcessor {
         int positionY = organism.getCurrentPosition().getY();
         int positionX = organism.getCurrentPosition().getX();
         Organism neighbour;
-        for (int y = positionY - 1; y <  positionY + 1; y++) {
-            for (int x = positionX - 1; x < positionX + 1; x++) {
+        for (int y = positionY - 1; y <=  positionY + 1; y++) {
+            for (int x = positionX - 1; x <= positionX + 1; x++) {
                 if ((neighbour = FieldProcessor.field[FieldProcessor.adjustToBounds(y, FieldProcessor.Y_AXIS_SIZE)]
                         [FieldProcessor.adjustToBounds(x, FieldProcessor.X_AXIS_SIZE)]) != null &&
                         !organismsToRemove.contains(neighbour) &&
-                        !(x == positionX && y == positionY))
+                        !(neighbour.getCurrentPosition().getX() == positionX && neighbour.getCurrentPosition().getY() == positionY))
                     return neighbour;
             }
         }
