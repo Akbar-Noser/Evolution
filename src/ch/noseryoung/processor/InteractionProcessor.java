@@ -49,7 +49,7 @@ public class InteractionProcessor {
         OrganismStats stats = organism.getOrganismStats();
         Organism neighbour;
         ArrayList<Organism> nextGeneration = new ArrayList<>();
-        if (stats.getAggression() > 0 && stats.getAggression() > stats.getCharm()) {
+        if (stats.getAggression() > 3 && stats.getAggression() > stats.getCharm()) {
             if ((neighbour = getFirstNeighbour(organism)) != null) {
                 Organism winner = aggressionInteraction(organism, neighbour);
                 nextGeneration.add(winner);
