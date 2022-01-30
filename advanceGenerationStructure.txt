@@ -1,0 +1,20 @@
+- move
+  - calculate new position
+  - check if new position empty and adjust
+  - copy to new position
+  - delete on old position
+------------------
+| - interaction |
+| - replication |
+------------------
+
+- interaction
+  - Save new reference to the winner, 
+    delete both references in field
+
+- replication
+  - iterate through list of organisms in field
+  - copy organisms in field which fulfill condition of
+    survival
+  - clear field
+  - fill field with new organisms
